@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>SplashScreen.qml</file>
+        <file>BaseView.qml</file>
+        <file>MenuButton.qml</file>
+        <file>CreatePlayerOverlay.qml</file>
+        <file>StatusBar.qml</file>
+        <file>LookupOverlay.qml</file>
+        <file>GameStatsOverlay.qml</file>
+    </qresource>
+</RCC>
