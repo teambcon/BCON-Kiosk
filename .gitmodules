@@ -1,0 +1,3 @@
+[submodule "libBCONNetwork"]
+	path = libBCONNetwork
+	url = https://github.com/teambcon/libBCONNetwork.git
