@@ -162,7 +162,7 @@ Item {
                             anchors.centerIn: parent
                             font.pixelSize: 20
                             color: "white"
-                            text: modelData[ 2 ]
+                            text: modelData[ 3 ]
                         }
                     }
 
@@ -177,7 +177,7 @@ Item {
                             anchors.centerIn: parent
                             font.pixelSize: 20
                             color: "white"
-                            text: modelData[ 3 ]
+                            text: modelData[ 2 ]
                         }
                     }
                 }
