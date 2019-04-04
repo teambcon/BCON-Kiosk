@@ -111,11 +111,18 @@ void DataManager::handleData( const DataPoint & Data )
         /* Build the list of published stats. */
         for ( int i = 0; i < DataStore::getDataPoint( "gameStats.length" ).Value.toInt(); i++ )
         {
-            QString sGameName = DataStore::getDataPoint( "games."
-                                                         + DataStore::getDataPoint( "gameStats."
-                                                                                    + QString::number( i )
-                                                                                    + ".gameId" ).Value.toString()
-                                                         + ".name" ).Value.toString();
+            /* Retrieve the game name. */
+            QString sGameName = "";
+            for ( int j = 0; j < DataStore::getDataPoint( "games.length" ).Value.toInt(); j++ )
+            {
+                if ( 0 == QString::compare(
+                         DataStore::getDataPoint( "gameStats." + QString::number( i ) + ".gameId" ).Value.toString(),
+                         DataStore::getDataPoint( "games." + QString::number( j ) + "._id" ).Value.toString() ) )
+                {
+                    sGameName = DataStore::getDataPoint( "games." + QString::number( j ) + ".name" ).Value.toString();
+                    break;
+                }
+            }
 
             QVariantList Stat{
                 sGameName,
@@ -123,9 +130,6 @@ void DataManager::handleData( const DataPoint & Data )
                 DataStore::getDataPoint( "gameStats." + QString::number( i ) + ".highScore" ).Value.toInt(),
                 DataStore::getDataPoint( "gameStats." + QString::number( i ) + ".ticketsEarned" ).Value.toInt()
             };
-
-            /* Add a subscription for the game name for later substitution. */
-            DataStore::subscribe( "games." + Stat.first().toString() + ".name", this );
 
             CurrentPlayerStats << QVariant::fromValue( Stat );
         }
