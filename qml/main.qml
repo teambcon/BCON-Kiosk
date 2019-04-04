@@ -17,7 +17,7 @@ Window {
 
     Timer {
         id: splashScreenTimer
-        interval: 500
+        interval: 2500
         running: true
         repeat: false
 
