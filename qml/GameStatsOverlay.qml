@@ -195,12 +195,8 @@ Item {
 
         Item {
             id: emptyText
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.left: parent.left
-            anchors.leftMargin: 40
-            anchors.right: parent.right
-            anchors.rightMargin: 40
-            height: 100
+            anchors.centerIn: parent
+            height: 180
             visible: 0 === DataManager.stats.length
 
             Text {
