@@ -22,6 +22,12 @@ Item {
         }
     }
 
+    MouseArea {
+        id: mouseCatcher
+        anchors.fill: parent
+        visible: parent.visible
+    }
+
     Rectangle {
         id: background
         anchors.fill: parent
