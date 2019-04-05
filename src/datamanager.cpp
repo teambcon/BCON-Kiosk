@@ -179,6 +179,12 @@ void DataManager::addTokens( const int & iTokens )
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+void DataManager::updateScreenName( const QString & sScreenName )
+{
+    pBackend->updatePlayerScreenName( sCurrentPlayerId, sScreenName );
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+
 QObject * datamanager_singletontype_provider( QQmlEngine * pEngine, QJSEngine * pScriptEngine )
 {
      Q_UNUSED( pEngine )

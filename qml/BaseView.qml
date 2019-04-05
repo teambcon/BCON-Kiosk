@@ -95,6 +95,8 @@ Item {
                 buttonWidth: 400
                 buttonHeight: 75
                 buttonText: qsTr( "Change Screen Name" )
+
+                onClicked: updateScreenNameOverlay.visible = true
             }
 
             MenuButton {
@@ -146,6 +148,12 @@ Item {
 
     AddTokensOverlay {
         id: addTokensOverlay
+        anchors.fill: parent
+        visible: false
+    }
+
+    UpdateScreenNameOverlay {
+        id: updateScreenNameOverlay
         anchors.fill: parent
         visible: false
     }

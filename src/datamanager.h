@@ -41,6 +41,7 @@ public slots:
 
     void createPlayer( const QString & sFirstName, const QString & sLastName, const QString & sScreenName );
     void addTokens( const int & iTokens );
+    void updateScreenName( const QString & sScreenName );
 
 private slots:
     void on_nfcManagerCardInserted();

@@ -9,5 +9,6 @@
         <file>LookupOverlay.qml</file>
         <file>GameStatsOverlay.qml</file>
         <file>AddTokensOverlay.qml</file>
+        <file>UpdateScreenNameOverlay.qml</file>
     </qresource>
 </RCC>
