@@ -56,7 +56,7 @@ int main( int argc, char * argv[] )
     QFont Font( "SFNS Display" );
     QGuiApplication::setFont( Font );
 
-    /* Register the NFC Manager in the QML context. */
+    /* Register the Data Manager in the QML context. */
     qmlRegisterSingletonType<DataManager>( "com.bcon.datamanager", 1, 0, "DataManager", datamanager_singletontype_provider );
     QQmlEngine::setObjectOwnership( qobject_cast<QObject *>( DataManager::instance() ), QQmlEngine::CppOwnership );
     DataManager::instance()->setParent( &App );
