@@ -173,6 +173,12 @@ void DataManager::createPlayer( const QString & sFirstName, const QString & sLas
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+void DataManager::addTokens( const int & iTokens )
+{
+    pBackend->updatePlayerTokens( sCurrentPlayerId, iCurrentPlayerTokens + iTokens );
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+
 QObject * datamanager_singletontype_provider( QQmlEngine * pEngine, QJSEngine * pScriptEngine )
 {
      Q_UNUSED( pEngine )

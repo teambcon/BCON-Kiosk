@@ -30,7 +30,6 @@ Item {
                 color: "white"
                 text: qsTr( "Starting Kiosk..." )
             }
-
         }
     }
 }

@@ -3,5 +3,6 @@
         <file>fonts/San_Francisco-Regular.ttf</file>
         <file>fonts/San_Francisco-Bold.ttf</file>
         <file>images/rfid.gif</file>
+        <file>images/check-success.png</file>
     </qresource>
 </RCC>

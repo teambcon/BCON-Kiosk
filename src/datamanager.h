@@ -40,6 +40,7 @@ public slots:
     void handleData( const DataPoint & Data ) override;
 
     void createPlayer( const QString & sFirstName, const QString & sLastName, const QString & sScreenName );
+    void addTokens( const int & iTokens );
 
 private slots:
     void on_nfcManagerCardInserted();

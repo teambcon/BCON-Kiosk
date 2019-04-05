@@ -85,6 +85,8 @@ Item {
                 buttonWidth: 400
                 buttonHeight: 75
                 buttonText: qsTr( "Add Tokens" )
+
+                onClicked: addTokensOverlay.visible = true
             }
 
             MenuButton {
@@ -138,6 +140,12 @@ Item {
 
     GameStatsOverlay {
         id: gameStatsOverlay
+        anchors.fill: parent
+        visible: false
+    }
+
+    AddTokensOverlay {
+        id: addTokensOverlay
         anchors.fill: parent
         visible: false
     }

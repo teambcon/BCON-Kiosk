@@ -226,17 +226,17 @@ Item {
                 text: qsTr( "Play some games and come back to see how you're doing." )
             }
         }
-    }
 
-    MenuButton {
-        id: backButton
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 40
-        buttonWidth: 300
-        buttonHeight: 75
-        buttonText: qsTr( "Close" )
+        MenuButton {
+            id: backButton
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 40
+            buttonWidth: 300
+            buttonHeight: 75
+            buttonText: qsTr( "Close" )
 
-        onClicked: gameStatsOverlay.visible = false;
+            onClicked: gameStatsOverlay.visible = false;
+        }
     }
 }

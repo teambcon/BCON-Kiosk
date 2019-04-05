@@ -8,5 +8,6 @@
         <file>StatusBar.qml</file>
         <file>LookupOverlay.qml</file>
         <file>GameStatsOverlay.qml</file>
+        <file>AddTokensOverlay.qml</file>
     </qresource>
 </RCC>
