@@ -6,7 +6,7 @@ Window {
     id: window
     visible: true
     width: 800
-    height: 800
+    height: 720
     title: qsTr( "BCON Kiosk" )
 
     Loader {

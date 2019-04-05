@@ -59,7 +59,7 @@ Item {
         Item {
             id: addedContainer
             anchors.centerIn: parent
-            height: successIcon.height + processingText.height + 60
+            height: successIcon.height + processingText.height + 100
 
             Image {
                 id: successIcon
