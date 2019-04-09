@@ -28,23 +28,17 @@ Item {
         anchors.fill: parent
         color: "#1c1c1c"
 
-        StatusBar {
-            id: statusBar
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            height: 60
-        }
-
         RowLayout {
             id: infoLayout
-            anchors.centerIn: parent
+            anchors.top: parent.top
+            anchors.topMargin: 220
+            anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width - 80
+            height: 200
             spacing: 20
 
             Image {
                 id: prizeImage
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
                 Layout.fillHeight: true
                 width: parent.width / 2 - 20
                 fillMode: Image.PreserveAspectFit
@@ -54,7 +48,6 @@ Item {
             Item {
                 id: prizeInfoContainer
                 width: parent.width / 2 - 20
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 

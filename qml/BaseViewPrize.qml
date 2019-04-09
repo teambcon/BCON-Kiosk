@@ -353,7 +353,7 @@ Item {
             PropertyChanges {
                 target: subHeader
                 anchors.topMargin: 20
-                text: qsTr( "You just redeemed a " + prizeDetailOverlay.name + " for " + prizeDetailOverlay.ticketCost + " tickets." )
+                text: qsTr( "You just redeemed a " + prizeDetailOverlay.name.toLowerCase() + " for " + prizeDetailOverlay.ticketCost + " tickets." )
                 font.pixelSize: 24
             }
 
