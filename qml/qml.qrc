@@ -10,5 +10,8 @@
         <file>GameStatsOverlay.qml</file>
         <file>AddTokensOverlay.qml</file>
         <file>UpdateScreenNameOverlay.qml</file>
+        <file>BaseViewPrize.qml</file>
+        <file>NewPlayerErrorOverlay.qml</file>
+        <file>PrizeDetailOverlay.qml</file>
     </qresource>
 </RCC>

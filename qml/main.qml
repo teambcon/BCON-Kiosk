@@ -21,7 +21,7 @@ Window {
         running: true
         repeat: false
 
-        onTriggered: mainWindowLoader.source = "qrc:/BaseView.qml"
+        onTriggered: mainWindowLoader.source = PRIZE_KIOSK ? "qrc:/BaseViewPrize.qml" : "qrc:/BaseView.qml"
     }
 
     InputPanel {

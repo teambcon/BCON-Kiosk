@@ -34,6 +34,7 @@ DataManager::DataManager( QObject * pParent ) : QObject( pParent )
     DataStore::subscribe( "tokens",      this );
     DataStore::subscribe( "tickets",     this );
     DataStore::subscribe( "gameStats.$", this );
+    DataStore::subscribe( "prizes.$",    this );
 
     /* Subscribe to the HTTP status code for errors. */
     DataStore::subscribe( "statusCode", this );
@@ -138,6 +139,36 @@ void DataManager::handleData( const DataPoint & Data )
         return;
     }
 
+    Regex.setPattern( "^prizes\\.\\$$" );
+    Matches = Regex.match( Data.sTag );
+    if ( Matches.hasMatch() )
+    {
+        /* Clean the list if necessary. */
+        if ( !PrizeList.empty() )
+        {
+            qDeleteAll( PrizeList.begin(), PrizeList.end() );
+            PrizeList.clear();
+        }
+
+        /* Populate the list of prizes. */
+        for ( int i = 0; i < DataStore::getDataPoint( "prizes.length" ).Value.toInt(); i++ )
+        {
+            PrizeList.append( new Prize( DataStore::getDataPoint(
+                                             "prizes." + QString::number( i ) + ".name" ).Value.toString(),
+                                         DataStore::getDataPoint(
+                                             "prizes." + QString::number( i ) + ".description" ).Value.toString(),
+                                         DataStore::getDataPoint(
+                                             "prizes." + QString::number( i ) + ".ticketCost" ).Value.toInt(),
+                                         DataStore::getDataPoint(
+                                             "prizes." + QString::number( i ) + ".availableQuantity" ).Value.toInt(),
+                                         DataStore::getDataPoint(
+                                             "prizes." + QString::number( i ) + ".imageData" ).Value.toString() ) );
+        }
+
+        emit prizeListChanged();
+        return;
+    }
+
     /* Error codes. */
     Regex.setPattern( "^statusCode$" );
     Matches = Regex.match( Data.sTag );
@@ -182,6 +213,20 @@ void DataManager::addTokens( const int & iTokens )
 void DataManager::updateScreenName( const QString & sScreenName )
 {
     pBackend->updatePlayerScreenName( sCurrentPlayerId, sScreenName );
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+void DataManager::redeemPrize( const int & iModelIndex )
+{
+    if ( 0 <= iModelIndex )
+    {
+        pBackend->redeemPrize( DataStore::getDataPoint( "prizes." + QString::number( iModelIndex ) + "._id" )
+                               .Value.toString(), sCurrentPlayerId );
+
+        /* Refresh the prizes and player information. */
+        pBackend->getAllPrizes();
+        pBackend->getPlayer( sCurrentPlayerId );
+    }
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 

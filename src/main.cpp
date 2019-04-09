@@ -4,6 +4,7 @@
 #include <QFontDatabase>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 
 #include <BCONNetwork/bconnetwork.h>
 
@@ -32,6 +33,8 @@ int main( int argc, char * argv[] )
 
     /* Parse the command line arguments. */
     QCommandLineParser Parser;
+    QCommandLineOption PrizeOption( QStringList() << "p" << "prize",
+                                    QCoreApplication::translate( "main", "Load as a prize kiosk (Rewards Center)." ) );
     QCommandLineOption ServerOption( QStringList() << "s" << "server",
                                      QCoreApplication::translate( "main", "Address of the backend server to connect to." ),
                                      QCoreApplication::translate( "main", "IP:Port" ) );
@@ -40,6 +43,7 @@ int main( int argc, char * argv[] )
     Parser.setApplicationDescription( "BCON Kiosk" );
     Parser.addHelpOption();
     Parser.addVersionOption();
+    Parser.addOption( PrizeOption );
     Parser.addOption( ServerOption );
     Parser.addOption( NFCOption );
     Parser.process( App );
@@ -73,11 +77,15 @@ int main( int argc, char * argv[] )
         return -1;
     }
 
+    /* Pass indication to load a prize kiosk into the QML context. */
+    pEngine->rootContext()->setContextProperty( "PRIZE_KIOSK", QVariant( Parser.isSet( "prize" ) ? true : false ) );
+
     /* Initialize the BCON network. */
     pBackend = new BCONNetwork( sServerAddress, bUseNFC );
 
-    /* Request all games now to keep them in the data store for later reference. */
+    /* Request all games and prizes now to keep them in the data store for later reference. */
     pBackend->getAllGames();
+    pBackend->getAllPrizes();
 
     return App.exec();
 }

@@ -4,5 +4,6 @@
         <file>fonts/San_Francisco-Bold.ttf</file>
         <file>images/rfid.gif</file>
         <file>images/check-success.png</file>
+        <file>images/error-icon.png</file>
     </qresource>
 </RCC>
