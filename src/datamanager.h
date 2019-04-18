@@ -91,6 +91,8 @@ private slots:
     void on_nfcManagerCardInserted();
     void on_nfcManagerCardRead( const QString & sId );
 
+    void on_redeemRefreshTimeout();
+
 private:
     QString sCurrentPlayerId;
     QString sCurrentPlayerFirstName;

@@ -224,9 +224,15 @@ void DataManager::redeemPrize( const int & iModelIndex )
                                .Value.toString(), sCurrentPlayerId );
 
         /* Refresh the prizes and player information. */
-        pBackend->getAllPrizes();
-        pBackend->getPlayer( sCurrentPlayerId );
+        QTimer::singleShot( 1000, this, SLOT( on_redeemRefreshTimeout() ) );
     }
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+void DataManager::on_redeemRefreshTimeout()
+{
+    pBackend->getAllPrizes();
+    pBackend->getPlayer( sCurrentPlayerId );
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 
